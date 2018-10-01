@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import { ModalImage } from "@times-components/image";
 import cropPropTypes from "./crop-prop-types";
 
-const ArticleLeadAssetImage = ({ caption, credits, crop: { ratio, url } }) => {
+const ArticleLeadAssetImage = ({
+  caption,
+  credits,
+  crop: { ratio, url },
+  width
+}) => {
   const [ratioWidth, ratioHeight] = ratio.split(":");
   const aspectRatio = ratioWidth / ratioHeight;
 
@@ -12,6 +17,7 @@ const ArticleLeadAssetImage = ({ caption, credits, crop: { ratio, url } }) => {
       aspectRatio={aspectRatio}
       caption={caption}
       credits={credits}
+      highResSize={width}
       uri={url}
     />
   );
@@ -20,12 +26,14 @@ const ArticleLeadAssetImage = ({ caption, credits, crop: { ratio, url } }) => {
 ArticleLeadAssetImage.propTypes = {
   caption: PropTypes.string,
   credits: PropTypes.string,
-  crop: cropPropTypes.isRequired
+  crop: cropPropTypes.isRequired,
+  width: PropTypes.number
 };
 
 ArticleLeadAssetImage.defaultProps = {
   caption: null,
-  credits: null
+  credits: null,
+  width: null
 };
 
 export default ArticleLeadAssetImage;
