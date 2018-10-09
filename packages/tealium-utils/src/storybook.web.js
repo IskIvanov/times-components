@@ -5,10 +5,10 @@ import tealiumReporter, {
 } from "@times-components/tealium";
 
 const trackingOptions = {
-  enabled: true,
   account: "newsinternational",
-  profile: "thetimes.2018",
-  env: "dev"
+  enabled: true,
+  env: "dev",
+  profile: "thetimes.2018"
 };
 
 const tealiumSendScheduler = new TealiumSendScheduler(

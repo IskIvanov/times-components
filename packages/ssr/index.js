@@ -17,12 +17,15 @@ const server = express();
 
 const makeClient = () =>
   new ApolloClient({
-    ssrMode: true,
+    cache: new Cache({
+      addTypename: true,
+      fragmentMatcher
+    }),
     link: createHttpLink({
       fetch,
       uri: process.env.GRAPHQL_ENDPOINT
     }),
-    cache: new Cache({ addTypename: true, fragmentMatcher })
+    ssrMode: true
   });
 
 const makeHtml = (
